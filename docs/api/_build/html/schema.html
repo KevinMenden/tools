@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nf_core.schema &#8212; nf-core tools API 1.13.dev0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="nf_core.sync" href="sync.html" />
+    <link rel="prev" title="nf_core.modules" href="modules.html" /> 
+  </head><body>
+<!-- your html code here -->
+<a href="https://nf-co.re"><img src="./_static/nf-core-logo.png" width="20%"></a>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sync.html" title="nf_core.sync"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="nf_core.modules"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">nf-core tools API 1.13.dev0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">nf_core.schema</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nf-core-schema">
+<h1>nf_core.schema<a class="headerlink" href="#nf-core-schema" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-nf_core.schema"></span><p>Code to deal with pipeline JSON Schema</p>
+<dl class="py class">
+<dt id="nf_core.schema.PipelineSchema">
+<em class="property">class </em><code class="sig-prename descclassname">nf_core.schema.</code><code class="sig-name descname">PipelineSchema</code><a class="headerlink" href="#nf_core.schema.PipelineSchema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to generate a schema object with
+functions to handle pipeline JSON Schema</p>
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.add_schema_found_configs">
+<code class="sig-name descname">add_schema_found_configs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.add_schema_found_configs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add anything that’s found in the Nextflow params that’s missing in the pipeline schema</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.build_schema">
+<code class="sig-name descname">build_schema</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pipeline_dir</span></em>, <em class="sig-param"><span class="n">no_prompts</span></em>, <em class="sig-param"><span class="n">web_only</span></em>, <em class="sig-param"><span class="n">url</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.build_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interactively build a new pipeline schema for a pipeline</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.build_schema_param">
+<code class="sig-name descname">build_schema_param</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p_val</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.build_schema_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a pipeline schema dictionary for an param interactively</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.get_schema_defaults">
+<code class="sig-name descname">get_schema_defaults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.get_schema_defaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate set of default input parameters from schema.</p>
+<p>Saves defaults to self.schema_defaults
+Returns count of how many parameters were found (with or without a default value)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.get_schema_path">
+<code class="sig-name descname">get_schema_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">local_only</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">revision</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.get_schema_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a pipeline name, directory, or path, set self.schema_filename</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.get_web_builder_response">
+<code class="sig-name descname">get_web_builder_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.get_web_builder_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a URL for a Schema build response, recursively query it until results are ready.
+Once ready, validate Schema and write to disk.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.get_wf_params">
+<code class="sig-name descname">get_wf_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.get_wf_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the pipeline parameter defaults using <cite>nextflow config</cite>
+Strip out only the params. values and ignore anything that is not a flat variable</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.launch_web_builder">
+<code class="sig-name descname">launch_web_builder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.launch_web_builder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send pipeline schema to web builder and wait for response</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.load_input_params">
+<code class="sig-name descname">load_input_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params_path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.load_input_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a given a path to a parameters file (JSON/YAML)</p>
+<p>These should be input parameters used to run a pipeline with
+the Nextflow -params-file option.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.load_lint_schema">
+<code class="sig-name descname">load_lint_schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.load_lint_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load and lint a given schema to see if it looks valid</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.load_schema">
+<code class="sig-name descname">load_schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.load_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a pipeline schema from a file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.make_skeleton_schema">
+<code class="sig-name descname">make_skeleton_schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.make_skeleton_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a new pipeline schema from the template</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.prompt_remove_schema_notfound_config">
+<code class="sig-name descname">prompt_remove_schema_notfound_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p_key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.prompt_remove_schema_notfound_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a given key is found in the nextflow config params and prompt to remove it if note</p>
+<p>Returns True if it should be removed, False if not.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.remove_schema_notfound_configs">
+<code class="sig-name descname">remove_schema_notfound_configs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.remove_schema_notfound_configs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Go through top-level schema and all definitions sub-schemas to remove
+anything that’s not in the nextflow config.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.remove_schema_notfound_configs_single_schema">
+<code class="sig-name descname">remove_schema_notfound_configs_single_schema</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">schema</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.remove_schema_notfound_configs_single_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Go through a single schema / set of properties and strip out
+anything that’s not in the nextflow config.</p>
+<p>Takes: Schema or sub-schema with properties key
+Returns: Cleaned schema / sub-schema</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.save_schema">
+<code class="sig-name descname">save_schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.save_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a pipeline schema to a file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.validate_params">
+<code class="sig-name descname">validate_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.validate_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check given parameters against a schema and validate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.validate_schema">
+<code class="sig-name descname">validate_schema</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">schema</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.validate_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the Schema is valid</p>
+<p>Returns: Number of parameters found</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.schema.PipelineSchema.validate_schema_title_description">
+<code class="sig-name descname">validate_schema_title_description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">schema</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.schema.PipelineSchema.validate_schema_title_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extra validation command for linting.
+Checks that the schema “$id”, “title” and “description” attributes match the piipeline config.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="previous chapter">nf_core.modules</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sync.html"
+                        title="next chapter">nf_core.sync</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/schema.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sync.html" title="nf_core.sync"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="nf_core.modules"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">nf-core tools API 1.13.dev0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">nf_core.schema</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Phil Ewels, Sven Fillinger.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+    </div>
+  </body>
+</html>

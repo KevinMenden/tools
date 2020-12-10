@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nf_core.sync &#8212; nf-core tools API 1.13.dev0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="nf_core.utils" href="utils.html" />
+    <link rel="prev" title="nf_core.schema" href="schema.html" /> 
+  </head><body>
+<!-- your html code here -->
+<a href="https://nf-co.re"><img src="./_static/nf-core-logo.png" width="20%"></a>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="nf_core.utils"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="schema.html" title="nf_core.schema"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">nf-core tools API 1.13.dev0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">nf_core.sync</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-nf_core.sync">
+<span id="nf-core-sync"></span><h1>nf_core.sync<a class="headerlink" href="#module-nf_core.sync" title="Permalink to this headline">¶</a></h1>
+<p>Synchronise a pipeline TEMPLATE branch with the template.</p>
+<dl class="py class">
+<dt id="nf_core.sync.PipelineSync">
+<em class="property">class </em><code class="sig-prename descclassname">nf_core.sync.</code><code class="sig-name descname">PipelineSync</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pipeline_dir</span></em>, <em class="sig-param"><span class="n">from_branch</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">make_pr</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">gh_repo</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">gh_username</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Object to hold syncing information and results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pipeline_dir</strong> (<em>str</em>) – The path to the Nextflow pipeline root directory</p></li>
+<li><p><strong>from_branch</strong> (<em>str</em>) – The branch to use to fetch config vars. If not set, will use current active branch</p></li>
+<li><p><strong>make_pr</strong> (<em>bool</em>) – Set this to <cite>True</cite> to create a GitHub pull-request with the changes</p></li>
+<li><p><strong>gh_username</strong> (<em>str</em>) – GitHub username</p></li>
+<li><p><strong>gh_repo</strong> (<em>str</em>) – GitHub repository name</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="nf_core.sync.PipelineSync.pipeline_dir">
+<code class="sig-name descname">pipeline_dir</code><a class="headerlink" href="#nf_core.sync.PipelineSync.pipeline_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to target pipeline directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="nf_core.sync.PipelineSync.from_branch">
+<code class="sig-name descname">from_branch</code><a class="headerlink" href="#nf_core.sync.PipelineSync.from_branch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Repo branch to use when collecting workflow variables. Default: active branch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="nf_core.sync.PipelineSync.original_branch">
+<code class="sig-name descname">original_branch</code><a class="headerlink" href="#nf_core.sync.PipelineSync.original_branch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Repo branch that was checked out before we started.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="nf_core.sync.PipelineSync.made_changes">
+<code class="sig-name descname">made_changes</code><a class="headerlink" href="#nf_core.sync.PipelineSync.made_changes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether making the new template pipeline introduced any changes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="nf_core.sync.PipelineSync.make_pr">
+<code class="sig-name descname">make_pr</code><a class="headerlink" href="#nf_core.sync.PipelineSync.make_pr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to try to automatically make a PR on GitHub.com</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="nf_core.sync.PipelineSync.required_config_vars">
+<code class="sig-name descname">required_config_vars</code><a class="headerlink" href="#nf_core.sync.PipelineSync.required_config_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of nextflow variables required to make template pipeline</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="nf_core.sync.PipelineSync.gh_username">
+<code class="sig-name descname">gh_username</code><a class="headerlink" href="#nf_core.sync.PipelineSync.gh_username" title="Permalink to this definition">¶</a></dt>
+<dd><p>GitHub username</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="nf_core.sync.PipelineSync.gh_repo">
+<code class="sig-name descname">gh_repo</code><a class="headerlink" href="#nf_core.sync.PipelineSync.gh_repo" title="Permalink to this definition">¶</a></dt>
+<dd><p>GitHub repository name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.checkout_template_branch">
+<code class="sig-name descname">checkout_template_branch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.checkout_template_branch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to check out the origin/TEMPLATE in a new TEMPLATE branch.
+If this fails, try to check out an existing local TEMPLATE branch.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.commit_template_changes">
+<code class="sig-name descname">commit_template_changes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.commit_template_changes" title="Permalink to this definition">¶</a></dt>
+<dd><p>If we have any changes with the new template files, make a git commit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.delete_template_branch_files">
+<code class="sig-name descname">delete_template_branch_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.delete_template_branch_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all files in the TEMPLATE branch</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.get_wf_config">
+<code class="sig-name descname">get_wf_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.get_wf_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check out the target branch if requested and fetch the nextflow config.
+Check that we have the required config variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.inspect_sync_dir">
+<code class="sig-name descname">inspect_sync_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.inspect_sync_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a look at the target directory for syncing. Checks that it’s a git repo
+and makes sure that there are no uncommitted changes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.make_pull_request">
+<code class="sig-name descname">make_pull_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.make_pull_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a pull request to a base branch (default: dev),
+from a head branch (default: TEMPLATE)</p>
+<p>Returns: An instance of class requests.Response</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.make_template_pipeline">
+<code class="sig-name descname">make_template_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.make_template_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all files and make a fresh template using the workflow variables</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.push_template_branch">
+<code class="sig-name descname">push_template_branch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.push_template_branch" title="Permalink to this definition">¶</a></dt>
+<dd><p>If we made any changes, push the TEMPLATE branch to the default remote
+and try to make a PR. If we don’t have the auth token, try to figure out a URL
+for the PR and print this to the console.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.reset_target_dir">
+<code class="sig-name descname">reset_target_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.reset_target_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the target pipeline directory. Check out the original branch.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.submit_pull_request">
+<code class="sig-name descname">submit_pull_request</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pr_title</span></em>, <em class="sig-param"><span class="n">pr_body_text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.submit_pull_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new pull-request on GitHub</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.sync">
+<code class="sig-name descname">sync</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.sync" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find workflow attributes, create a new template pipeline on TEMPLATE</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.sync.PipelineSync.update_existing_pull_request">
+<code class="sig-name descname">update_existing_pull_request</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pr_title</span></em>, <em class="sig-param"><span class="n">pr_body_text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.sync.PipelineSync.update_existing_pull_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>List existing pull-requests between TEMPLATE and self.from_branch</p>
+<p>If one is found, attempt to update it with a new title and body text
+If none are found, return False</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="nf_core.sync.PullRequestException">
+<em class="property">exception </em><code class="sig-prename descclassname">nf_core.sync.</code><code class="sig-name descname">PullRequestException</code><a class="headerlink" href="#nf_core.sync.PullRequestException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception raised when there was an error creating a Pull-Request on GitHub.com</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="nf_core.sync.SyncException">
+<em class="property">exception </em><code class="sig-prename descclassname">nf_core.sync.</code><code class="sig-name descname">SyncException</code><a class="headerlink" href="#nf_core.sync.SyncException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception raised when there was an error with TEMPLATE branch synchronisation</p>
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="schema.html"
+                        title="previous chapter">nf_core.schema</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="utils.html"
+                        title="next chapter">nf_core.utils</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/sync.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="nf_core.utils"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="schema.html" title="nf_core.schema"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">nf-core tools API 1.13.dev0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">nf_core.sync</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Phil Ewels, Sven Fillinger.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+    </div>
+  </body>
+</html>

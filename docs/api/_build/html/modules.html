@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nf_core.modules &#8212; nf-core tools API 1.13.dev0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="nf_core.schema" href="schema.html" />
+    <link rel="prev" title="nf_core.list" href="list.html" /> 
+  </head><body>
+<!-- your html code here -->
+<a href="https://nf-co.re"><img src="./_static/nf-core-logo.png" width="20%"></a>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="schema.html" title="nf_core.schema"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="list.html" title="nf_core.list"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">nf-core tools API 1.13.dev0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">nf_core.modules</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nf-core-modules">
+<h1>nf_core.modules<a class="headerlink" href="#nf-core-modules" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-nf_core.modules"></span><p>Code to handle DSL2 module imports from a GitHub repository</p>
+<dl class="py class">
+<dt id="nf_core.modules.ModulesRepo">
+<em class="property">class </em><code class="sig-prename descclassname">nf_core.modules.</code><code class="sig-name descname">ModulesRepo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">repo</span><span class="o">=</span><span class="default_value">'nf-core/modules'</span></em>, <em class="sig-param"><span class="n">branch</span><span class="o">=</span><span class="default_value">'master'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.modules.ModulesRepo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An object to store details about the repository being used for modules.</p>
+<p>Used by the <cite>nf-core modules</cite> top-level command with -r and -b flags,
+so that this can be used in the same way by all sucommands.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="nf_core.modules.PipelineModules">
+<em class="property">class </em><code class="sig-prename descclassname">nf_core.modules.</code><code class="sig-name descname">PipelineModules</code><a class="headerlink" href="#nf_core.modules.PipelineModules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="nf_core.modules.PipelineModules.check_modules">
+<code class="sig-name descname">check_modules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.modules.PipelineModules.check_modules" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.modules.PipelineModules.download_gh_file">
+<code class="sig-name descname">download_gh_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dl_filename</span></em>, <em class="sig-param"><span class="n">api_url</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.modules.PipelineModules.download_gh_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download a file from GitHub using the GitHub API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dl_filename</strong> (<em>string</em>) – Path to save file to</p></li>
+<li><p><strong>api_url</strong> (<em>string</em>) – GitHub API URL for file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>If a problem</strong><strong>, </strong><strong>raises an error</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.modules.PipelineModules.get_module_file_urls">
+<code class="sig-name descname">get_module_file_urls</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.modules.PipelineModules.get_module_file_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch list of URLs for a specific module</p>
+<p>Takes the name of a module and iterates over the GitHub repo file tree.
+Loops over items that are prefixed with the path ‘software/&lt;module_name&gt;’ and ignores
+anything that’s not a blob. Also ignores the test/ subfolder.</p>
+<p>Returns a dictionary with keys as filenames and values as GitHub API URIs.
+These can be used to then download file contents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>module</strong> (<em>string</em>) – Name of module for which to fetch a set of URLs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>Set of files and associated URLs as follows:</p>
+<dl class="simple">
+<dt>{</dt><dd><p>‘software/fastqc/main.nf’: ‘<a class="reference external" href="https://api.github.com/repos/nf-core/modules/git/blobs/65ba598119206a2b851b86a9b5880b5476e263c3">https://api.github.com/repos/nf-core/modules/git/blobs/65ba598119206a2b851b86a9b5880b5476e263c3</a>’,
+‘software/fastqc/meta.yml’: ‘<a class="reference external" href="https://api.github.com/repos/nf-core/modules/git/blobs/0d5afc23ba44d44a805c35902febc0a382b17651">https://api.github.com/repos/nf-core/modules/git/blobs/0d5afc23ba44d44a805c35902febc0a382b17651</a>’</p>
+</dd>
+</dl>
+<p>}</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.modules.PipelineModules.get_modules_file_tree">
+<code class="sig-name descname">get_modules_file_tree</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.modules.PipelineModules.get_modules_file_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch the file list from the repo, using the GitHub API</p>
+<dl class="simple">
+<dt>Sets self.modules_file_tree</dt><dd><p>self.modules_current_hash
+self.modules_avail_module_names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.modules.PipelineModules.install">
+<code class="sig-name descname">install</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.modules.PipelineModules.install" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.modules.PipelineModules.list_modules">
+<code class="sig-name descname">list_modules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.modules.PipelineModules.list_modules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get available module names from GitHub tree for repo
+and print as list to stdout</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.modules.PipelineModules.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.modules.PipelineModules.remove" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.modules.PipelineModules.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em>, <em class="sig-param"><span class="n">force</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.modules.PipelineModules.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="list.html"
+                        title="previous chapter">nf_core.list</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="schema.html"
+                        title="next chapter">nf_core.schema</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/modules.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="schema.html" title="nf_core.schema"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="list.html" title="nf_core.list"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">nf-core tools API 1.13.dev0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">nf_core.modules</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Phil Ewels, Sven Fillinger.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+    </div>
+  </body>
+</html>

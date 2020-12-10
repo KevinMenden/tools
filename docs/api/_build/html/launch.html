@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nf_core.launch &#8212; nf-core tools API 1.13.dev0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="nf_core.licences" href="licences.html" />
+    <link rel="prev" title="nf_core.download" href="download.html" /> 
+  </head><body>
+<!-- your html code here -->
+<a href="https://nf-co.re"><img src="./_static/nf-core-logo.png" width="20%"></a>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="licences.html" title="nf_core.licences"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="download.html" title="nf_core.download"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">nf-core tools API 1.13.dev0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">nf_core.launch</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nf-core-launch">
+<h1>nf_core.launch<a class="headerlink" href="#nf-core-launch" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-nf_core.launch"></span><p>Launch a pipeline, interactively collecting params</p>
+<dl class="py class">
+<dt id="nf_core.launch.Launch">
+<em class="property">class </em><code class="sig-prename descclassname">nf_core.launch.</code><code class="sig-name descname">Launch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pipeline</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">revision</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">command_only</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">params_in</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">params_out</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">save_all</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">show_hidden</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">url</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">web_id</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to hold config option to launch a pipeline</p>
+<dl class="py method">
+<dt id="nf_core.launch.Launch.build_command">
+<code class="sig-name descname">build_command</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.build_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the nextflow run command based on what we know</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.get_pipeline_schema">
+<code class="sig-name descname">get_pipeline_schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.get_pipeline_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load and validate the schema from the supplied pipeline</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.get_web_launch_response">
+<code class="sig-name descname">get_web_launch_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.get_web_launch_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a URL for a web-gui launch response, recursively query it until results are ready.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.launch_pipeline">
+<code class="sig-name descname">launch_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.launch_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.launch_web_gui">
+<code class="sig-name descname">launch_web_gui</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.launch_web_gui" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send schema to nf-core website and launch input GUI</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.launch_workflow">
+<code class="sig-name descname">launch_workflow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.launch_workflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Launch nextflow if required</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.merge_nxf_flag_schema">
+<code class="sig-name descname">merge_nxf_flag_schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.merge_nxf_flag_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take the Nextflow flag schema and merge it with the pipeline schema</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.print_param_header">
+<code class="sig-name descname">print_param_header</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">param_id</span></em>, <em class="sig-param"><span class="n">param_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.print_param_header" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.prompt_group">
+<code class="sig-name descname">prompt_group</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">group_id</span></em>, <em class="sig-param"><span class="n">group_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.prompt_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prompt for edits to a group of parameters (subschema in ‘definitions’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_id</strong> – Paramater ID (string)</p></li>
+<li><p><strong>group_obj</strong> – JSON Schema keys (dict)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>val answers</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dict of param_id</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.prompt_param">
+<code class="sig-name descname">prompt_param</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">param_id</span></em>, <em class="sig-param"><span class="n">param_obj</span></em>, <em class="sig-param"><span class="n">is_required</span></em>, <em class="sig-param"><span class="n">answers</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.prompt_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prompt for a single parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.prompt_schema">
+<code class="sig-name descname">prompt_schema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.prompt_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Go through the pipeline schema and prompt user to change defaults</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.prompt_web_gui">
+<code class="sig-name descname">prompt_web_gui</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.prompt_web_gui" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ask whether to use the web-based or cli wizard to collect params</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.sanitise_web_response">
+<code class="sig-name descname">sanitise_web_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.sanitise_web_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>The web builder returns everything as strings.
+Use the functions defined in the cli wizard to convert to the correct types.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.set_schema_inputs">
+<code class="sig-name descname">set_schema_inputs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.set_schema_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take the loaded schema and set the defaults as the input parameters
+If a nf_params.json file is supplied, apply these over the top</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.single_param_to_questionary">
+<code class="sig-name descname">single_param_to_questionary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">param_id</span></em>, <em class="sig-param"><span class="n">param_obj</span></em>, <em class="sig-param"><span class="n">answers</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">print_help</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.single_param_to_questionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a JSONSchema param to a Questionary question</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>param_id</strong> – Parameter ID (string)</p></li>
+<li><p><strong>param_obj</strong> – JSON Schema keys (dict)</p></li>
+<li><p><strong>answers</strong> – Optional preexisting answers (dict)</p></li>
+<li><p><strong>print_help</strong> – If description and help_text should be printed (bool)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Single Questionary dict, to be appended to questions list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nf_core.launch.Launch.strip_default_params">
+<code class="sig-name descname">strip_default_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nf_core.launch.Launch.strip_default_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Strip parameters if they have not changed from the default</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="download.html"
+                        title="previous chapter">nf_core.download</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="licences.html"
+                        title="next chapter">nf_core.licences</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/launch.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="licences.html" title="nf_core.licences"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="download.html" title="nf_core.download"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">nf-core tools API 1.13.dev0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">nf_core.launch</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Phil Ewels, Sven Fillinger.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+    </div>
+  </body>
+</html>
